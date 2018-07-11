@@ -12,8 +12,8 @@ add_executable(ShapeLegend
         src/engine/render/OpenGLRenderEngine.cpp
         src/engine/render/OpenGLRenderEngine.hpp
         src/configuration/Configuration.hpp
-        src/configuration/World.hpp
-        src/configuration/World.cpp
+        src/entity/World.hpp
+        src/entity/World.cpp
         src/engine/input/InputEngine.cpp
         src/engine/input/InputEngine.hpp
         src/event/Event.hpp
@@ -25,7 +25,7 @@ add_executable(ShapeLegend
         src/engine/input/OpenGLPCInputEngine.hpp
         src/engine/GameEngine.cpp
         src/engine/GameEngine.hpp
-)
+        src/entity/core/Transform.cpp src/entity/core/Transform.hpp src/entity/core/Vector3.cpp src/entity/core/Vector3.hpp src/entity/Shape.cpp src/entity/Shape.hpp src/entity/core/BaseEntity.cpp src/entity/core/BaseEntity.hpp src/common/Logger.cpp src/common/Logger.hpp src/entity/core/renderer/Renderer.cpp src/entity/core/renderer/Renderer.hpp src/entity/core/renderer/TriangleRenderer.cpp src/entity/core/renderer/TriangleRenderer.hpp src/entity/core/renderer/SquareRenderer.cpp src/entity/core/renderer/SquareRenderer.hpp src/entity/core/renderer/CircleRenderer.cpp src/entity/core/renderer/CircleRenderer.hpp)
 
 # glfw
 find_package(glfw3 REQUIRED)
@@ -39,6 +39,12 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 # glew
 find_package(GLEW REQUIRED)
 include_directories(${GLEW_INCLUDE_DIRS})
+
+# glm
+include_directories(
+        external/glm-0.9.7.1/
+        .
+)
 
 target_link_libraries(
         ShapeLegend

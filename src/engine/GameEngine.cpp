@@ -4,15 +4,16 @@
 
 #include <chrono>
 #include <thread>
+#include <src/common/Logger.hpp>
 
 #include "GameEngine.hpp"
 #include "../event/Event.hpp"
-#include "../configuration/World.hpp"
+#include "src/entity/World.hpp"
 
 void GameEngine::gameLoop() {
 
     while (true) {
-        std::cout << "game loop called" << std::endl;
+        Logger::debug("game loop called");
         Event event = World::instance().getInputEngine().getInput();
         World::instance().getEventObservable().notify(event);
         if (event.getValue() == Event::ESCAPE_EVENT) {

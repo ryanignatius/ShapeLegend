@@ -5,10 +5,10 @@
 #ifndef SHAPELEGEND_WORLD_HPP
 #define SHAPELEGEND_WORLD_HPP
 
-#include "../engine/GameEngine.hpp"
-#include "../engine/render/RenderEngine.hpp"
-#include "../engine/input/InputEngine.hpp"
-#include "../event/EventObservable.hpp"
+#include "src/engine/GameEngine.hpp"
+#include "src/engine/render/RenderEngine.hpp"
+#include "src/engine/input/InputEngine.hpp"
+#include "src/event/EventObservable.hpp"
 
 class World {
 public:

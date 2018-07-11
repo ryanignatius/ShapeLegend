@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <src/common/Logger.hpp>
 
 #include "EventObservable.hpp"
 
@@ -26,9 +27,9 @@ void EventObservable::removeObserver(EventObserver *eventObserver) {
 
 void EventObservable::notify(Event event) {
     if (event.getValue() != Event::NULL_EVENT) {
-    std::cout << "notify called" << std::endl;
+        Logger::debug("notify called");
         for (auto eventObserver : eventObservers) {
-            std::cout << "notify to observer called" << std::endl;
+            Logger::debug("notify to observer called");
             eventObserver->onEvent(event);
         }
     }

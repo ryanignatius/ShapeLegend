@@ -3,8 +3,8 @@
 //
 
 #include "World.hpp"
-#include "../engine/render/OpenGLRenderEngine.hpp"
-#include "../engine/input/OpenGLPCInputEngine.hpp"
+#include "src/engine/render/OpenGLRenderEngine.hpp"
+#include "src/engine/input/OpenGLPCInputEngine.hpp"
 
 World::World() {
     err = 0;
