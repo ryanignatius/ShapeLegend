@@ -17,7 +17,7 @@ public:
     Renderer& getRenderer();
     void setTransform(Transform&);
     void setRenderer(Renderer*);
-private:
+protected:
     bool active;
     Transform transform;
     Renderer *renderer;

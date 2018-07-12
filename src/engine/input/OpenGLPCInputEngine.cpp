@@ -15,5 +15,19 @@ Event OpenGLPCInputEngine::getInput() {
         Logger::info("close window event called");
         return {Event::ESCAPE_EVENT};
     }
+
+    // player 1
+    if (glfwGetKey( &window, GLFW_KEY_UP ) == GLFW_PRESS){
+        return {Event::PLAYER1_UP_EVENT};
+    }
+    if (glfwGetKey( &window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+        return {Event::PLAYER1_DOWN_EVENT};
+    }
+    if (glfwGetKey( &window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+        return {Event::PLAYER1_LEFT_EVENT};
+    }
+    if (glfwGetKey( &window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+        return {Event::PLAYER1_RIGHT_EVENT};
+    }
     return {Event::NULL_EVENT};
 }

@@ -6,8 +6,11 @@
 #define SHAPELEGEND_SHAPE_HPP
 
 
-class Shape {
+#include <src/entity/core/BaseEntity.hpp>
 
+class Shape : public BaseEntity {
+public:
+    Shape();
 };
 
 
