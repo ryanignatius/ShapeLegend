@@ -52,30 +52,31 @@ private:
     static constexpr double pi() { return std::atan(1)*4; }
 
     GLfloat *g_vertex_buffer_data;
-    /*
-    GLfloat g_vertex_buffer_data[9] = {
-            -1.0f, -1.0f, 0.0f,
-            1.0f, -1.0f, 0.0f,
-            0.0f,  1.0f, 0.0f,
-    };
-     */
     GLfloat *g_color_buffer_data;
-    /*
-    [9] = {
-            1.0f,  1.0f, 0.0f,
-            1.0f,  1.0f, 0.0f,
-            1.0f,  1.0f, 0.0f,
-    };
-     */
+    GLfloat *g_normal_buffer_data;
+
     GLFWwindow* window;
     GLuint VertexArrayID;
     GLuint programID;
+
     GLuint vertexbuffer;
     GLuint colorbuffer;
+    GLuint normalbuffer;
+
     GLuint MatrixID;
+    GLuint ViewMatrixID;
+    GLuint ModelMatrixID;
+    GLuint LightID;
+    GLuint LightPowerID;
+    GLuint LightColorID;
+
     glm::mat4 MVP;
+    glm::mat4 View;
+    glm::mat4 Model;
+
     std::vector<GLfloat> tempVertex;
     std::vector<GLfloat> tempColor;
+    std::vector<GLfloat> tempNormal;
 };
 
 #endif //SHAPELEGEND_OPENGLRENDERENGINE_HPP
