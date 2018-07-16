@@ -17,10 +17,12 @@ void GameEngine::gameLoop() {
     while (true) {
         Logger::debug("game loop called");
         Time::updateTime();
-        Event event = World::instance().getInputEngine().getInput();
-        World::instance().getEventObservable().notify(event);
-        if (event.getValue() == Event::ESCAPE_EVENT) {
-            break;
+        for (int i=0; i<EventObservable::MAX_CHANNEL; i++) {
+            Event event = World::instance().getInputEngine().getInput(i);
+            if (event.getValue() == Event::ESCAPE_EVENT) {
+                return;
+            }
+            World::instance().getEventObservable().notify(i, event);
         }
 
         //TODO

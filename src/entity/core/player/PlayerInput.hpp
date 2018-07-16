@@ -17,6 +17,10 @@ public:
     virtual void down();
     virtual void left();
     virtual void right();
+    virtual void upleft();
+    virtual void upright();
+    virtual void downleft();
+    virtual void downright();
 protected:
     int id;
     Transform *transform;

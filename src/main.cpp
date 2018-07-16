@@ -20,7 +20,7 @@ int main()
     World::instance().getRenderEngine().addEntity(&p1);
     q1.setShape(&p1);
     PlayerInput i1(1, &p1.getTransform());
-    World::instance().getEventObservable().addObserver(&i1);
+    World::instance().getEventObservable().addObserver(EventObservable::PLAYER1_CHANNEL, &i1);
     q1.setPlayerInput(&i1);
 
     Triangle p2(Vector3(0, 1, 0));
@@ -32,9 +32,14 @@ int main()
     World::instance().getRenderEngine().addEntity(&p3);
 
     //test circle
+    Player q4;
     Circle p4(Vector3(1, 0, 0));
     p4.getTransform().Translate(0, 0, 0);
     World::instance().getRenderEngine().addEntity(&p4);
+    q4.setShape(&p4);
+    PlayerInput i4(2, &p4.getTransform());
+    World::instance().getEventObservable().addObserver(EventObservable::PLAYER2_CHANNEL, &i4);
+    q4.setPlayerInput(&i4);
 
     Circle p5(Vector3(0, 1, 0));
     p5.getTransform().Translate(5, 0, 0);
@@ -45,9 +50,14 @@ int main()
     World::instance().getRenderEngine().addEntity(&p6);
 
     //test square
+    Player q7;
     Square p7(Vector3(1, 0, 0));
     p7.getTransform().Translate(5, -5, 0);
     World::instance().getRenderEngine().addEntity(&p7);
+    q7.setShape(&p7);
+    PlayerInput i7(3, &p7.getTransform());
+    World::instance().getEventObservable().addObserver(EventObservable::PLAYER3_CHANNEL, &i7);
+    q7.setPlayerInput(&i7);
 
     Square p8(Vector3(0, 1, 0));
     p8.getTransform().Translate(-5, -5, 0);

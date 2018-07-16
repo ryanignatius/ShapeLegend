@@ -8,27 +8,29 @@
 #include "EventObservable.hpp"
 
 EventObservable::EventObservable() {
-    eventObservers.clear();
+    for (int i=0; i<EventObservable::MAX_CHANNEL; i++) {
+        eventObservers[i].clear();
+    }
 }
 
-void EventObservable::addObserver(EventObserver *eventObserver) {
-    eventObservers.push_back(eventObserver);
+void EventObservable::addObserver(int channel, EventObserver *eventObserver) {
+    eventObservers[channel].push_back(eventObserver);
 }
 
-void EventObservable::removeObserver(EventObserver *eventObserver) {
+void EventObservable::removeObserver(int channel, EventObserver *eventObserver) {
     //TODO fix optimize
-    for (auto it = eventObservers.begin(); it != eventObservers.end(); it++) {
+    for (auto it = eventObservers[channel].begin(); it != eventObservers[channel].end(); it++) {
         if (*it == eventObserver) {
-            eventObservers.erase(it);
+            eventObservers[channel].erase(it);
             break;
         }
     }
 }
 
-void EventObservable::notify(Event event) {
+void EventObservable::notify(int channel, Event event) {
     if (event.getValue() != Event::NULL_EVENT) {
         Logger::debug("notify called");
-        for (auto eventObserver : eventObservers) {
+        for (auto eventObserver : eventObservers[channel]) {
             Logger::debug("notify to observer called");
             eventObserver->onEvent(event);
         }

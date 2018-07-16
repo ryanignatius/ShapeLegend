@@ -9,25 +9,59 @@
 OpenGLPCInputEngine::OpenGLPCInputEngine(GLFWwindow &win) : window(win) {
 }
 
-Event OpenGLPCInputEngine::getInput() {
+Event OpenGLPCInputEngine::getInput(int channel) {
     if (glfwGetKey(&window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ||
         glfwWindowShouldClose(&window) != 0) {
         Logger::info("close window event called");
         return {Event::ESCAPE_EVENT};
     }
 
-    // player 1
-    if (glfwGetKey( &window, GLFW_KEY_UP ) == GLFW_PRESS){
-        return {Event::PLAYER1_UP_EVENT};
+    int ev = Event::NULL_EVENT;
+    switch (channel) {
+        case 0:
+            break;
+        case 1:
+            if (glfwGetKey( &window, GLFW_KEY_UP ) == GLFW_PRESS){
+                ev |= Event::UP;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+                ev |= Event::DOWN;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+                ev |= Event::LEFT;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+                ev |= Event::RIGHT;
+            }
+            break;
+        case 2:
+            if (glfwGetKey( &window, GLFW_KEY_W ) == GLFW_PRESS){
+                ev |= Event::UP;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_S ) == GLFW_PRESS){
+                ev |= Event::DOWN;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_A ) == GLFW_PRESS){
+                ev |= Event::LEFT;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_D ) == GLFW_PRESS){
+                ev |= Event::RIGHT;
+            }
+            break;
+        case 3:
+            if (glfwGetKey( &window, GLFW_KEY_I ) == GLFW_PRESS){
+                ev |= Event::UP;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_K ) == GLFW_PRESS){
+                ev |= Event::DOWN;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_J ) == GLFW_PRESS){
+                ev |= Event::LEFT;
+            }
+            if (glfwGetKey( &window, GLFW_KEY_L ) == GLFW_PRESS){
+                ev |= Event::RIGHT;
+            }
+            break;
     }
-    if (glfwGetKey( &window, GLFW_KEY_DOWN ) == GLFW_PRESS){
-        return {Event::PLAYER1_DOWN_EVENT};
-    }
-    if (glfwGetKey( &window, GLFW_KEY_LEFT ) == GLFW_PRESS){
-        return {Event::PLAYER1_LEFT_EVENT};
-    }
-    if (glfwGetKey( &window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
-        return {Event::PLAYER1_RIGHT_EVENT};
-    }
-    return {Event::NULL_EVENT};
+    return {ev};
 }

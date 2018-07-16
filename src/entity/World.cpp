@@ -14,7 +14,7 @@ World::World() {
 #if USE_ENGINE == OPEN_GL
     OpenGLRenderEngine *openGLRenderEngine = new OpenGLRenderEngine();
     if (openGLRenderEngine->init() == 0) {
-        eventObservable->addObserver(openGLRenderEngine);
+        eventObservable->addObserver(EventObservable::GENERAL_CHANNEL, openGLRenderEngine);
         renderEngine = openGLRenderEngine;
         inputEngine = new OpenGLPCInputEngine(openGLRenderEngine->getWindow());
     } else {

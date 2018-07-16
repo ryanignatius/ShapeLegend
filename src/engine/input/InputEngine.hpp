@@ -9,7 +9,7 @@
 
 class InputEngine {
 public:
-    virtual Event getInput() = 0;
+    virtual Event getInput(int) = 0;
 };
 
 #endif //SHAPELEGEND_INPUTENGINE_HPP

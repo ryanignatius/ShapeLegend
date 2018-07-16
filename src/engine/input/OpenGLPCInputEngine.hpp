@@ -19,7 +19,7 @@ class OpenGLPCInputEngine : public InputEngine {
 public:
     explicit OpenGLPCInputEngine(GLFWwindow &);
 
-    Event getInput() override;
+    Event getInput(int) override;
 
 private:
     GLFWwindow &window;
