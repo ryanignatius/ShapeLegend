@@ -8,23 +8,15 @@
 
 #include <src/event/EventObserver.hpp>
 #include <src/entity/core/Transform.hpp>
+#include "PlayerMove.hpp"
 
 class PlayerInput : public EventObserver {
 public:
-    PlayerInput(int, Transform*);
+    PlayerInput(int, PlayerMove*);
     void onEvent(Event) override;
-    virtual void up();
-    virtual void down();
-    virtual void left();
-    virtual void right();
-    virtual void upleft();
-    virtual void upright();
-    virtual void downleft();
-    virtual void downright();
 protected:
     int id;
-    Transform *transform;
+    PlayerMove *playerMove;
 };
-
 
 #endif //SHAPELEGEND_PLAYERINPUT_HPP
